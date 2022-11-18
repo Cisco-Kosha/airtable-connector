@@ -9,7 +9,7 @@ The connector APIs allow you to perform 'RESTful' operations such as reading, mo
 
 
 
-![airtable](images/airtable.jpg)
+![airtable](images/test.png)
 
 This Connector API exposes REST API endpoints to perform any operations on Airtable v0 API in a simple, quick and intuitive fashion.
 
