@@ -29,7 +29,7 @@ func makeHttpReq(token string, req *http.Request) []byte {
 	return bodyBytes
 }
 
-func GetRecords(url string, apiKey string) *models.Agents {
+func GetRecords(url string, apiKey string) *models.Records {
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
