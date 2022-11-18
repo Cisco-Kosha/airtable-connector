@@ -24,7 +24,7 @@ func (a *App) listConnectorSpecification(w http.ResponseWriter, r *http.Request)
 	w.Header().Set("Access-Control-Allow-Methods", "*")
 
 	respondWithJSON(w, http.StatusOK, map[string]string{
-		"API_KEY":     "Freshservice API Key",
-		"DOMAIN_NAME": "Freshservice Domain Name",
+		"Token":     "Airtable Bearer Token",
+		"DOMAIN_NAME": "Airtable Domain Name",
 	})
 }

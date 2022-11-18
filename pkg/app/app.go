@@ -5,8 +5,8 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/kosha/freshservice-connector/pkg/config"
-	"github.com/kosha/freshservice-connector/pkg/logger"
+	"github.com/kosha/airtable-connector/pkg/config"
+	"github.com/kosha/airtable-connector/pkg/logger"
 )
 
 type App struct {
