@@ -1,0 +1,78 @@
+basePath: /
+definitions:
+  models.Records:
+    properties:
+      createdTime:
+        type: string
+      fields:
+        properties:
+          End date:
+            type: string
+          Field 3:
+            type: string
+          Field 4:
+            type: string
+          Projects:
+            type: string
+        type: object
+      id:
+        type: string
+    type: object
+host: localhost:8012
+info:
+  contact:
+    email: eti@cisco.io
+    name: API Support
+  description: This is a Kosha REST serice for exposing many freshservice features
+    as REST APIs with better consistency, observability etc
+  termsOfService: http://swagger.io/terms/
+  title: Freshservice Connector API
+  version: "2.0"
+paths:
+  /api/v2/specification/list:
+    get:
+      consumes:
+      - application/json
+      description: Get all environment variables that need to be supplied
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: object
+        "400":
+          description: bad request
+          schema:
+            type: string
+        "403":
+          description: permission denied
+          schema:
+            type: string
+        "404":
+          description: not found
+          schema:
+            type: string
+        "500":
+          description: internal server error
+          schema:
+            type: string
+      summary: Get details of the connector specification
+      tags:
+      - specification
+  /v0/{baseId}/{tableIdOrName}:
+    get:
+      consumes:
+      - application/json
+      description: Get Records
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Records'
+      summary: Get airtable
+      tags:
+      - agents
+swagger: "2.0"

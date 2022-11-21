@@ -1,0 +1,134 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "contact": {
+      "email": "eti@cisco.io",
+      "name": "API Support"
+    },
+    "description": "This is a Kosha REST serice for exposing many freshservice features as REST APIs with better consistency, observability etc",
+    "termsOfService": "http://swagger.io/terms/",
+    "title": "Freshservice Connector API",
+    "version": "2.0"
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "paths": {
+    "/api/v2/specification/list": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "bad request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "internal server error"
+          }
+        },
+        "tags": [
+          "specification"
+        ],
+        "description": "Get all environment variables that need to be supplied",
+        "summary": "Get details of the connector specification"
+      }
+    },
+    "/v0/{baseId}/{tableIdOrName}": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/models.Records"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "agents"
+        ],
+        "description": "Get Records",
+        "summary": "Get airtable"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "models.Records": {
+        "properties": {
+          "createdTime": {
+            "type": "string"
+          },
+          "fields": {
+            "properties": {
+              "End date": {
+                "type": "string"
+              },
+              "Field 3": {
+                "type": "string"
+              },
+              "Field 4": {
+                "type": "string"
+              },
+              "Projects": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    }
+  }
+}
