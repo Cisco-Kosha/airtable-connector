@@ -6,7 +6,7 @@ import (
 	"github.com/kosha/airtable-connector/pkg/httpclient"
 )
 
-// getAgents godoc
+// getRecords godoc
 // @Summary Get airtable
 // @Description Get Records
 // @Tags agents
@@ -27,7 +27,7 @@ func (a *App) listRecords(w http.ResponseWriter, r *http.Request) {
 }
 
 
-// getAgents godoc
+// getRecords godoc
 // @Summary Get airtable
 // @Description Get Records
 // @Tags agents

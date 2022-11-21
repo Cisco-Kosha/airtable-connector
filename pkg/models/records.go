@@ -61,3 +61,12 @@ type TableStruct struct {
 	} `json:"views"`
 }
 
+
+type BasesStruct struct {
+	Bases []struct {
+		ID              string `json:"id"`
+		Name            string `json:"name"`
+		PermissionLevel string `json:"permissionLevel"`
+	} `json:"bases"`
+	Offset string `json:"offset"`
+}

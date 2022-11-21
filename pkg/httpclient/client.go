@@ -49,10 +49,7 @@ func ListRecords(url string, apiKey string) []*models.Records {
 	return records
 }
 
-
-
 func GetRecords(url string, apiKey string) *models.Records {
-
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		fmt.Println(err)
@@ -69,4 +66,42 @@ func GetRecords(url string, apiKey string) *models.Records {
 		return nil
 	}
 	return records
+}
+
+func GetComments(url string, apiKey string) *models.CommentStruct {
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	var comments *models.CommentStruct
+
+	res := makeHttpReq(apiKey, req)
+
+	// Convert response body to target struct
+	err = json.Unmarshal(res, &comments)
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	return comments
+}
+
+func GetBases(url string, apiKey string) *models.BasesStruct {
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	var bases *models.BasesStruct
+
+	res := makeHttpReq(apiKey, req)
+
+	// Convert response body to target struct
+	err = json.Unmarshal(res, &bases)
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	return bases
 }
