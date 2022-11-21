@@ -16,7 +16,7 @@ import (
 )
 
 var (
-	log  = logger.New("app", "freshservice-connector")
+	log  = logger.New("app", "airtable-connector")
 	port = 8012
 )
 
