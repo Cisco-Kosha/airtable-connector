@@ -36,7 +36,7 @@ func ListRecords(url string, apiKey string) []*models.Records {
 		fmt.Println(err)
 		return nil
 	}
-	var records *models.Records
+	var records []*models.Records
 
 	res := makeHttpReq(apiKey, req)
 
