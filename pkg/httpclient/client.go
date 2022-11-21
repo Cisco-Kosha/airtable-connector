@@ -68,7 +68,7 @@ func GetRecords(url string, apiKey string) *models.Records {
 	return records
 }
 
-func GetComments(url string, apiKey string) *models.CommentStruct {
+func ListComments(url string, apiKey string) *models.CommentStruct {
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		fmt.Println(err)

@@ -21,7 +21,7 @@ func (a *App) listComments(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Headers", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "*")
 
-	agents := httpclient.listComments(a.Cfg.GetAirtableURL(), a.Cfg.GetApiKey())
+	agents := httpclient.ListComments(a.Cfg.GetAirtableURL(), a.Cfg.GetApiKey())
 
 	respondWithJSON(w, http.StatusOK, agents)
 }
