@@ -15,7 +15,7 @@ import (
 // @Produce  json
 // @Success 200 {object} models.BasesStruct
 // @Router /v0/meta/bases [get]
-func (a *App) getbase(w http.ResponseWriter, r *http.Request) {
+func (a *App) getBases(w http.ResponseWriter, r *http.Request) {
 
 	//Allow CORS here By * or specific origin
 	w.Header().Set("Access-Control-Allow-Origin", "*")
