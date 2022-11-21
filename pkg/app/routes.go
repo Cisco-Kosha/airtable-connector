@@ -17,7 +17,7 @@ func (a *App) initializeRoutes() {
 	// a.Router.HandleFunc("https://api.airtable.com/v0/{baseId}/{tableIdOrName}", a.getRecords).Methods("POST", "OPTIONS")
 	// a.Router.HandleFunc("https://api.airtable.com/v0/{baseId}/{tableIdOrName}/{recordId}", a.listRecords).Methods("DELETE", "OPTIONS")
 
-	a.Router.HandleFunc("https://api.airtable.com/v0/{baseId}/{tableIdOrName}/{recordId}/comments", a.ListComments).Methods("GET", "OPTIONS")
+	a.Router.HandleFunc("https://api.airtable.com/v0/{baseId}/{tableIdOrName}/{recordId}/comments", a.listComments).Methods("GET", "OPTIONS")
 	a.Router.HandleFunc("https://api.airtable.com/v0/v0/meta/bases", a.getBases).Methods("GET", "OPTIONS")
 
 
