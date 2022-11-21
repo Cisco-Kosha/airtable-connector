@@ -79,7 +79,7 @@ func init() {
 	prometheus.Register(httpDuration)
 }
 
-// @title Freshservice Connector API
+// @title Airtable Connector API
 // @version 2.0
 // @description This is a Kosha REST serice for exposing many freshservice features as REST APIs with better consistency, observability etc
 // @termsOfService http://swagger.io/terms/
