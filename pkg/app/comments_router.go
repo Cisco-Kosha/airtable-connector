@@ -13,7 +13,7 @@ import (
 // @Accept  json
 // @Produce  json
 // @Success 200 {object} models.Comments
-// @Router /v0/{baseId}/{tableIdOrName}/{recordId}/comments [get]
+// @Router /api/v0/{baseId}/{tableIdOrName}/{recordId}/comments [get]
 func (a *App) listComments(w http.ResponseWriter, r *http.Request) {
 
 	//Allow CORS here By * or specific origin
@@ -25,5 +25,3 @@ func (a *App) listComments(w http.ResponseWriter, r *http.Request) {
 
 	respondWithJSON(w, http.StatusOK, agents)
 }
-
-
