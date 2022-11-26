@@ -24,7 +24,7 @@ func (a *App) listConnectorSpecification(w http.ResponseWriter, r *http.Request)
 	w.Header().Set("Access-Control-Allow-Methods", "*")
 
 	respondWithJSON(w, http.StatusOK, map[string]string{
-		"Token":     "Airtable Bearer Token",
+		"Token":       "Airtable Bearer Token",
 		"DOMAIN_NAME": "Airtable Domain Name",
 	})
 }

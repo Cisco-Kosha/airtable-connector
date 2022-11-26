@@ -13,7 +13,7 @@ import (
 // @Accept  json
 // @Produce  json
 // @Success 200 {object} models.Records
-// @Router /v0/{baseId}/{tableIdOrName} [get]
+// @Router /api/v0/{baseId}/{tableIdOrName} [get]
 func (a *App) listRecords(w http.ResponseWriter, r *http.Request) {
 
 	//Allow CORS here By * or specific origin
@@ -26,7 +26,6 @@ func (a *App) listRecords(w http.ResponseWriter, r *http.Request) {
 	respondWithJSON(w, http.StatusOK, agents)
 }
 
-
 // getRecords godoc
 // @Summary Get airtable
 // @Description Get Records
@@ -34,7 +33,7 @@ func (a *App) listRecords(w http.ResponseWriter, r *http.Request) {
 // @Accept  json
 // @Produce  json
 // @Success 200 {object} models.Records
-// @Router /v0/{baseId}/{tableIdOrName}/{recordId} [get]
+// @Router /api/v0/{baseId}/{tableIdOrName}/{recordId} [get]
 func (a *App) getRecords(w http.ResponseWriter, r *http.Request) {
 
 	//Allow CORS here By * or specific origin

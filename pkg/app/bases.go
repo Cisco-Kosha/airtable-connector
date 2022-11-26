@@ -6,7 +6,6 @@ import (
 	"github.com/kosha/airtable-connector/pkg/httpclient"
 )
 
-
 // getBases godoc
 // @Summary Get airtable
 // @Description Get Records
@@ -14,7 +13,7 @@ import (
 // @Accept  json
 // @Produce  json
 // @Success 200 {object} models.BasesStruct
-// @Router /v0/meta/bases [get]
+// @Router /api/v0/meta/bases [get]
 func (a *App) getBases(w http.ResponseWriter, r *http.Request) {
 
 	//Allow CORS here By * or specific origin
