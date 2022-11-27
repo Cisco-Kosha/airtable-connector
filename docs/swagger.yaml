@@ -26,10 +26,67 @@ info:
   description: This is a Kosha REST serice for exposing many freshservice features
     as REST APIs with better consistency, observability etc
   termsOfService: http://swagger.io/terms/
-  title: Freshservice Connector API
+  title: Airtable Connector API
   version: "2.0"
 paths:
-  /api/v2/specification/list:
+  /api/v0/{baseId}/{tableId}:
+    get:
+      consumes:
+      - application/json
+      description: Get Records
+      parameters:
+      - description: Base Id
+        in: path
+        name: baseId
+        required: true
+        type: string
+      - description: Table Id
+        in: path
+        name: tableId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Records'
+      summary: Get airtable
+      tags:
+      - agents
+  /api/v0/{baseId}/{tableIdOrName}/{recordId}:
+    get:
+      consumes:
+      - application/json
+      description: Get Records
+      parameters:
+      - description: Base Id
+        in: path
+        name: baseId
+        required: true
+        type: string
+      - description: Table Id
+        in: path
+        name: tableIdOrName
+        required: true
+        type: string
+      - description: Base Id
+        in: path
+        name: recordId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Records'
+      summary: Get airtable
+      tags:
+      - agents
+  /api/v0/specification/list:
     get:
       consumes:
       - application/json
@@ -60,19 +117,4 @@ paths:
       summary: Get details of the connector specification
       tags:
       - specification
-  /v0/{baseId}/{tableIdOrName}:
-    get:
-      consumes:
-      - application/json
-      description: Get Records
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/models.Records'
-      summary: Get airtable
-      tags:
-      - agents
 swagger: "2.0"

@@ -6,14 +6,14 @@ import (
 )
 
 type Config struct {
-	apiKey     string
-	domainName string
+	personalAccessToken string
+	domainName          string
 }
 
 func Get() *Config {
 	conf := &Config{}
 
-	flag.StringVar(&conf.apiKey, "apiKey", os.Getenv("API_KEY"), "Airtable API Key")
+	flag.StringVar(&conf.personalAccessToken, "apiKey", os.Getenv("ACCESS_TOKEN"), "Airtable Access token")
 	flag.StringVar(&conf.domainName, "AirtableDomainName", os.Getenv("DOMAIN_NAME"), "Airtable Domain Name")
 
 	flag.Parse()
@@ -21,8 +21,8 @@ func Get() *Config {
 	return conf
 }
 
-func (c *Config) GetApiKey() string {
-	return c.apiKey
+func (c *Config) GetPersonalAccessToken() string {
+	return c.personalAccessToken
 }
 
 func (c *Config) GetDomainName() string {
@@ -30,5 +30,5 @@ func (c *Config) GetDomainName() string {
 }
 
 func (c *Config) GetAirtableURL() string {
-	return ""
+	return "https://api.airtable.com/v0"
 }

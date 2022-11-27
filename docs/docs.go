@@ -20,7 +20,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/api/v2/specification/list": {
+        "/api/v0/specification/list": {
             "get": {
                 "description": "Get all environment variables that need to be supplied",
                 "consumes": [
@@ -67,7 +67,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/v0/{baseId}/{tableIdOrName}": {
+        "/api/v0/{baseId}/{tableIdOrName}/{recordId}": {
             "get": {
                 "description": "Get Records",
                 "consumes": [
@@ -80,6 +80,68 @@ const docTemplate = `{
                     "agents"
                 ],
                 "summary": "Get airtable",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Base Id",
+                        "name": "baseId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Table Id",
+                        "name": "tableIdOrName",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Base Id",
+                        "name": "recordId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Records"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v0/{baseId}/{tableId}": {
+            "get": {
+                "description": "Get Records",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "agents"
+                ],
+                "summary": "Get airtable",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Base Id",
+                        "name": "baseId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Table Id",
+                        "name": "tableId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -129,7 +191,7 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "localhost:8012",
 	BasePath:         "/",
 	Schemes:          []string{},
-	Title:            "Freshservice Connector API",
+	Title:            "Airtable Connector API",
 	Description:      "This is a Kosha REST serice for exposing many freshservice features as REST APIs with better consistency, observability etc",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
