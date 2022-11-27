@@ -27,7 +27,6 @@ func (a *App) Initialize(log logger.Logger) {
 	a.Log = log
 	a.Router = router()
 	a.initializeRoutes()
-
 }
 
 // Run starts the app and serves on the specified addr

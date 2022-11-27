@@ -1,6 +1,61 @@
 basePath: /
 definitions:
-  models.Records:
+  models.BasesStruct:
+    properties:
+      bases:
+        items:
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            permissionLevel:
+              type: string
+          type: object
+        type: array
+      offset:
+        type: string
+    type: object
+  models.CommentStruct:
+    properties:
+      comments:
+        items:
+          properties:
+            author:
+              properties:
+                email:
+                  type: string
+                id:
+                  type: string
+                name:
+                  type: string
+              type: object
+            createdTime:
+              type: string
+            id:
+              type: string
+            lastUpdatedTime: {}
+            mentioned:
+              properties:
+                usrL2PNC5o3H4lBEi:
+                  properties:
+                    displayName:
+                      type: string
+                    email:
+                      type: string
+                    id:
+                      type: string
+                    type:
+                      type: string
+                  type: object
+              type: object
+            text:
+              type: string
+          type: object
+        type: array
+      offset: {}
+    type: object
+  models.Record:
     properties:
       createdTime:
         type: string
@@ -18,18 +73,245 @@ definitions:
       id:
         type: string
     type: object
+  models.RecordsStruct:
+    properties:
+      records:
+        items:
+          properties:
+            createdTime:
+              type: string
+            fields:
+              properties:
+                End date:
+                  type: string
+                Field 3:
+                  type: string
+                Field 4:
+                  type: string
+                Projects:
+                  type: string
+              type: object
+            id:
+              type: string
+          type: object
+        type: array
+    type: object
 host: localhost:8012
 info:
   contact:
     email: eti@cisco.io
     name: API Support
-  description: This is a Kosha REST serice for exposing many freshservice features
-    as REST APIs with better consistency, observability etc
+  description: This is a Kosha REST serice for exposing many airtable features as
+    REST APIs with better consistency, observability etc
   termsOfService: http://swagger.io/terms/
-  title: Freshservice Connector API
+  title: Airtable Connector API
   version: "2.0"
 paths:
-  /api/v2/specification/list:
+  /api/v0/{baseId}/{tableId}:
+    get:
+      consumes:
+      - application/json
+      description: Get Records
+      parameters:
+      - description: Base Id
+        in: path
+        name: baseId
+        required: true
+        type: string
+      - description: Table Id
+        in: path
+        name: tableId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.RecordsStruct'
+      summary: Get airtable
+      tags:
+      - Records
+    post:
+      consumes:
+      - application/json
+      description: |-
+        Create a record for airtable
+        Please refer to https://airtable.com/developers/web/api/create-records for more parameter options.
+      parameters:
+      - description: Enter project risk properties
+        in: body
+        name: project
+        schema:
+          $ref: '#/definitions/models.Record'
+      - description: Base Id
+        in: path
+        name: baseId
+        required: true
+        type: string
+      - description: Table Id
+        in: path
+        name: tableId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Create a record for a project
+      tags:
+      - createRecords
+  /api/v0/{baseId}/{tableId}/{recordId}:
+    delete:
+      consumes:
+      - application/json
+      description: |-
+        delete a record for the airtable
+        Please refer to https://airtable.com/developers/web/api/create-records for more parameter options.
+      parameters:
+      - description: Enter project risk properties
+        in: body
+        name: project
+        schema:
+          $ref: '#/definitions/models.Record'
+      - description: Base Id
+        in: path
+        name: baseId
+        required: true
+        type: string
+      - description: Table Id
+        in: path
+        name: tableId
+        required: true
+        type: string
+      - description: Record Id
+        in: path
+        name: RecordId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: delete a record for a project
+      tags:
+      - deleteRecords
+    put:
+      consumes:
+      - application/json
+      description: |-
+        Update a record for the airtable
+        Please refer to https://airtable.com/developers/web/api/create-records for more parameter options.
+      parameters:
+      - description: Enter project risk properties
+        in: body
+        name: project
+        schema:
+          $ref: '#/definitions/models.Record'
+      - description: Base Id
+        in: path
+        name: baseId
+        required: true
+        type: string
+      - description: Table Id
+        in: path
+        name: tableId
+        required: true
+        type: string
+      - description: Record Id
+        in: path
+        name: RecordId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: update a record for a project
+      tags:
+      - updateRecords
+  /api/v0/{baseId}/{tableIdOrName}/{recordId}:
+    get:
+      consumes:
+      - application/json
+      description: Get Records
+      parameters:
+      - description: Base Id
+        in: path
+        name: baseId
+        required: true
+        type: string
+      - description: Table Id
+        in: path
+        name: tableIdOrName
+        required: true
+        type: string
+      - description: Base Id
+        in: path
+        name: recordId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Record'
+      summary: Get airtable
+      tags:
+      - Records
+  /api/v0/{baseId}/{tableIdOrName}/{recordId}/comments:
+    get:
+      consumes:
+      - application/json
+      description: Get Comments
+      parameters:
+      - description: Base Id
+        in: path
+        name: baseId
+        required: true
+        type: string
+      - description: Table Id
+        in: path
+        name: tableIdOrName
+        required: true
+        type: string
+      - description: Base Id
+        in: path
+        name: recordId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CommentStruct'
+      summary: Get airtable
+      tags:
+      - Comments
+  /api/v0/meta/bases:
+    get:
+      consumes:
+      - application/json
+      description: Get Bases
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.BasesStruct'
+      summary: Get airtable
+      tags:
+      - Bases
+  /api/v0/specification/list:
     get:
       consumes:
       - application/json
@@ -60,19 +342,4 @@ paths:
       summary: Get details of the connector specification
       tags:
       - specification
-  /v0/{baseId}/{tableIdOrName}:
-    get:
-      consumes:
-      - application/json
-      description: Get Records
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/models.Records'
-      summary: Get airtable
-      tags:
-      - agents
 swagger: "2.0"

@@ -2,7 +2,20 @@ package models
 
 import "time"
 
-type Records struct {
+type RecordsStruct struct {
+	Records []struct {
+		ID          string    `json:"id"`
+		CreatedTime time.Time `json:"createdTime"`
+		Fields      struct {
+			Field4   string `json:"Field 4"`
+			Field3   string `json:"Field 3"`
+			Projects string `json:"Projects"`
+			EndDate  string `json:"End date"`
+		} `json:"fields"`
+	} `json:"records"`
+}
+
+type Record struct {
 	ID          string    `json:"id"`
 	CreatedTime time.Time `json:"createdTime"`
 	Fields      struct {
@@ -11,13 +24,6 @@ type Records struct {
 		Projects string `json:"Projects"`
 		EndDate  string `json:"End date"`
 	} `json:"fields"`
-}
-
-type Fields struct {
-	Description string `json:"description"`
-	ID          string `json:"id"`
-	Name        string `json:"name"`
-	Type        string `json:"type"`
 }
 
 type CommentStruct struct {
@@ -60,7 +66,6 @@ type TableStruct struct {
 		Type string `json:"type"`
 	} `json:"views"`
 }
-
 
 type BasesStruct struct {
 	Bases []struct {
