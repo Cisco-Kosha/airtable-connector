@@ -22,7 +22,7 @@ const docTemplate = `{
     "paths": {
         "/api/v0/meta/bases": {
             "get": {
-                "description": "Get Records",
+                "description": "Get Bases",
                 "consumes": [
                     "application/json"
                 ],
@@ -30,7 +30,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "agents"
+                    "Bases"
                 ],
                 "summary": "Get airtable",
                 "responses": {
@@ -100,7 +100,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "agents"
+                    "Records"
                 ],
                 "summary": "Get airtable",
                 "parameters": [
@@ -146,7 +146,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "agents"
+                    "Comments"
                 ],
                 "summary": "Get airtable",
                 "parameters": [
@@ -192,7 +192,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "agents"
+                    "Records"
                 ],
                 "summary": "Get airtable",
                 "parameters": [
@@ -217,6 +217,148 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/models.RecordsStruct"
                         }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a record for airtable\nPlease refer to https://airtable.com/developers/web/api/create-records for more parameter options.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "createRecords"
+                ],
+                "summary": "Create a record for a project",
+                "parameters": [
+                    {
+                        "description": "Enter project risk properties",
+                        "name": "project",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/models.Record"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Base Id",
+                        "name": "baseId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Table Id",
+                        "name": "tableId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v0/{baseId}/{tableId}/{recordId}": {
+            "put": {
+                "description": "Update a record for the airtable\nPlease refer to https://airtable.com/developers/web/api/create-records for more parameter options.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "updateRecords"
+                ],
+                "summary": "update a record for a project",
+                "parameters": [
+                    {
+                        "description": "Enter project risk properties",
+                        "name": "project",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/models.Record"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Base Id",
+                        "name": "baseId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Table Id",
+                        "name": "tableId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Record Id",
+                        "name": "RecordId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "delete": {
+                "description": "delete a record for the airtable\nPlease refer to https://airtable.com/developers/web/api/create-records for more parameter options.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "deleteRecords"
+                ],
+                "summary": "delete a record for a project",
+                "parameters": [
+                    {
+                        "description": "Enter project risk properties",
+                        "name": "project",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/models.Record"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Base Id",
+                        "name": "baseId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Table Id",
+                        "name": "tableId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Record Id",
+                        "name": "RecordId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
                     }
                 }
             }
@@ -382,7 +524,7 @@ var SwaggerInfo = &swag.Spec{
 	BasePath:         "/",
 	Schemes:          []string{},
 	Title:            "Airtable Connector API",
-	Description:      "This is a Kosha REST serice for exposing many freshservice features as REST APIs with better consistency, observability etc",
+	Description:      "This is a Kosha REST serice for exposing many airtable features as REST APIs with better consistency, observability etc",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 }

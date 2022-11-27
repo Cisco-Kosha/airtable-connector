@@ -81,7 +81,7 @@ func init() {
 
 // @title Airtable Connector API
 // @version 2.0
-// @description This is a Kosha REST serice for exposing many freshservice features as REST APIs with better consistency, observability etc
+// @description This is a Kosha REST serice for exposing many airtable features as REST APIs with better consistency, observability etc
 // @termsOfService http://swagger.io/terms/
 // @contact.name API Support
 // @contact.email eti@cisco.io
@@ -95,7 +95,7 @@ func main() {
 
 	// Prometheus metrics endpoint
 	a.Router.Path("/metrics").Handler(promhttp.Handler())
-	log.Infof("Running freshservice-connector on port %d", port)
+	log.Infof("Running airtable-connector on port %d", port)
 	a.Run(fmt.Sprintf(":%d", port))
 
 }

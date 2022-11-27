@@ -1,6 +1,7 @@
 package httpclient
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -85,6 +86,7 @@ func ListComments(url string, apiKey string) *models.CommentStruct {
 
 func GetBases(url string, apiKey string) *models.BasesStruct {
 	req, err := http.NewRequest("GET", url, nil)
+	fmt.Println(url)
 	if err != nil {
 		fmt.Println(err)
 		return nil
@@ -100,4 +102,31 @@ func GetBases(url string, apiKey string) *models.BasesStruct {
 		return nil
 	}
 	return bases
+}
+
+func CreateRecord(url string, body []byte, apiKey string) (string, error) {
+	req, err := http.NewRequest("POST", url, bytes.NewReader(body))
+	req.Header.Set("Content-Type", "application/json")
+	if err != nil {
+		return "", err
+	}
+	return string(makeHttpReq(apiKey, req)), nil
+}
+
+func DeleteRecord(url string, body []byte, apiKey string) (string, error) {
+	req, err := http.NewRequest("DELETE", url, bytes.NewReader(body))
+	req.Header.Set("Content-Type", "application/json")
+	if err != nil {
+		return "", err
+	}
+	return string(makeHttpReq(apiKey, req)), nil
+}
+
+func UpdateRecord(url string, body []byte, apiKey string) (string, error) {
+	req, err := http.NewRequest("UPDATE", url, bytes.NewReader(body))
+	req.Header.Set("Content-Type", "application/json")
+	if err != nil {
+		return "", err
+	}
+	return string(makeHttpReq(apiKey, req)), nil
 }

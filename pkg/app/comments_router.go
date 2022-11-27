@@ -10,7 +10,7 @@ import (
 // getComments godoc
 // @Summary Get airtable
 // @Description Get Comments
-// @Tags agents
+// @Tags Comments
 // @Accept  json
 // @Produce  json
 // @Param baseId path string true "Base Id"

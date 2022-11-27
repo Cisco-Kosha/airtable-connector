@@ -101,8 +101,8 @@ info:
   contact:
     email: eti@cisco.io
     name: API Support
-  description: This is a Kosha REST serice for exposing many freshservice features
-    as REST APIs with better consistency, observability etc
+  description: This is a Kosha REST serice for exposing many airtable features as
+    REST APIs with better consistency, observability etc
   termsOfService: http://swagger.io/terms/
   title: Airtable Connector API
   version: "2.0"
@@ -132,7 +132,108 @@ paths:
             $ref: '#/definitions/models.RecordsStruct'
       summary: Get airtable
       tags:
-      - agents
+      - Records
+    post:
+      consumes:
+      - application/json
+      description: |-
+        Create a record for airtable
+        Please refer to https://airtable.com/developers/web/api/create-records for more parameter options.
+      parameters:
+      - description: Enter project risk properties
+        in: body
+        name: project
+        schema:
+          $ref: '#/definitions/models.Record'
+      - description: Base Id
+        in: path
+        name: baseId
+        required: true
+        type: string
+      - description: Table Id
+        in: path
+        name: tableId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Create a record for a project
+      tags:
+      - createRecords
+  /api/v0/{baseId}/{tableId}/{recordId}:
+    delete:
+      consumes:
+      - application/json
+      description: |-
+        delete a record for the airtable
+        Please refer to https://airtable.com/developers/web/api/create-records for more parameter options.
+      parameters:
+      - description: Enter project risk properties
+        in: body
+        name: project
+        schema:
+          $ref: '#/definitions/models.Record'
+      - description: Base Id
+        in: path
+        name: baseId
+        required: true
+        type: string
+      - description: Table Id
+        in: path
+        name: tableId
+        required: true
+        type: string
+      - description: Record Id
+        in: path
+        name: RecordId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: delete a record for a project
+      tags:
+      - deleteRecords
+    put:
+      consumes:
+      - application/json
+      description: |-
+        Update a record for the airtable
+        Please refer to https://airtable.com/developers/web/api/create-records for more parameter options.
+      parameters:
+      - description: Enter project risk properties
+        in: body
+        name: project
+        schema:
+          $ref: '#/definitions/models.Record'
+      - description: Base Id
+        in: path
+        name: baseId
+        required: true
+        type: string
+      - description: Table Id
+        in: path
+        name: tableId
+        required: true
+        type: string
+      - description: Record Id
+        in: path
+        name: RecordId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: update a record for a project
+      tags:
+      - updateRecords
   /api/v0/{baseId}/{tableIdOrName}/{recordId}:
     get:
       consumes:
@@ -163,7 +264,7 @@ paths:
             $ref: '#/definitions/models.Record'
       summary: Get airtable
       tags:
-      - agents
+      - Records
   /api/v0/{baseId}/{tableIdOrName}/{recordId}/comments:
     get:
       consumes:
@@ -194,12 +295,12 @@ paths:
             $ref: '#/definitions/models.CommentStruct'
       summary: Get airtable
       tags:
-      - agents
+      - Comments
   /api/v0/meta/bases:
     get:
       consumes:
       - application/json
-      description: Get Records
+      description: Get Bases
       produces:
       - application/json
       responses:
@@ -209,7 +310,7 @@ paths:
             $ref: '#/definitions/models.BasesStruct'
       summary: Get airtable
       tags:
-      - agents
+      - Bases
   /api/v0/specification/list:
     get:
       consumes:
