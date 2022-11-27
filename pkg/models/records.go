@@ -49,23 +49,6 @@ type CommentStruct struct {
 	Offset interface{} `json:"offset"`
 }
 
-type TableStruct struct {
-	Description string `json:"description"`
-	Fields      []struct {
-		Description string `json:"description,omitempty"`
-		ID          string `json:"id"`
-		Name        string `json:"name"`
-		Type        string `json:"type"`
-	} `json:"fields"`
-	ID             string `json:"id"`
-	Name           string `json:"name"`
-	PrimaryFieldID string `json:"primaryFieldId"`
-	Views          []struct {
-		ID   string `json:"id"`
-		Name string `json:"name"`
-		Type string `json:"type"`
-	} `json:"views"`
-}
 
 type BasesStruct struct {
 	Bases []struct {
