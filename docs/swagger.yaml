@@ -1,5 +1,60 @@
 basePath: /
 definitions:
+  models.BasesStruct:
+    properties:
+      bases:
+        items:
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            permissionLevel:
+              type: string
+          type: object
+        type: array
+      offset:
+        type: string
+    type: object
+  models.CommentStruct:
+    properties:
+      comments:
+        items:
+          properties:
+            author:
+              properties:
+                email:
+                  type: string
+                id:
+                  type: string
+                name:
+                  type: string
+              type: object
+            createdTime:
+              type: string
+            id:
+              type: string
+            lastUpdatedTime: {}
+            mentioned:
+              properties:
+                usrL2PNC5o3H4lBEi:
+                  properties:
+                    displayName:
+                      type: string
+                    email:
+                      type: string
+                    id:
+                      type: string
+                    type:
+                      type: string
+                  type: object
+              type: object
+            text:
+              type: string
+          type: object
+        type: array
+      offset: {}
+    type: object
   models.Record:
     properties:
       createdTime:
@@ -106,6 +161,52 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/models.Record'
+      summary: Get airtable
+      tags:
+      - agents
+  /api/v0/{baseId}/{tableIdOrName}/{recordId}/comments:
+    get:
+      consumes:
+      - application/json
+      description: Get Comments
+      parameters:
+      - description: Base Id
+        in: path
+        name: baseId
+        required: true
+        type: string
+      - description: Table Id
+        in: path
+        name: tableIdOrName
+        required: true
+        type: string
+      - description: Base Id
+        in: path
+        name: recordId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CommentStruct'
+      summary: Get airtable
+      tags:
+      - agents
+  /api/v0/meta/bases:
+    get:
+      consumes:
+      - application/json
+      description: Get Records
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.BasesStruct'
       summary: Get airtable
       tags:
       - agents

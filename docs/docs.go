@@ -20,6 +20,29 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/api/v0/meta/bases": {
+            "get": {
+                "description": "Get Records",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "agents"
+                ],
+                "summary": "Get airtable",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.BasesStruct"
+                        }
+                    }
+                }
+            }
+        },
         "/api/v0/specification/list": {
             "get": {
                 "description": "Get all environment variables that need to be supplied",
@@ -113,6 +136,52 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/v0/{baseId}/{tableIdOrName}/{recordId}/comments": {
+            "get": {
+                "description": "Get Comments",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "agents"
+                ],
+                "summary": "Get airtable",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Base Id",
+                        "name": "baseId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Table Id",
+                        "name": "tableIdOrName",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Base Id",
+                        "name": "recordId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.CommentStruct"
+                        }
+                    }
+                }
+            }
+        },
         "/api/v0/{baseId}/{tableId}": {
             "get": {
                 "description": "Get Records",
@@ -154,6 +223,91 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "models.BasesStruct": {
+            "type": "object",
+            "properties": {
+                "bases": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "permissionLevel": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "offset": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CommentStruct": {
+            "type": "object",
+            "properties": {
+                "comments": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "author": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "createdTime": {
+                                "type": "string"
+                            },
+                            "id": {
+                                "type": "string"
+                            },
+                            "lastUpdatedTime": {},
+                            "mentioned": {
+                                "type": "object",
+                                "properties": {
+                                    "usrL2PNC5o3H4lBEi": {
+                                        "type": "object",
+                                        "properties": {
+                                            "displayName": {
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "text": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "offset": {}
+            }
+        },
         "models.Record": {
             "type": "object",
             "properties": {
