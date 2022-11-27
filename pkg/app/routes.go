@@ -10,6 +10,7 @@ func (a *App) initializeRoutes() {
 	// Records routes
 	a.Router.HandleFunc("/api/v0/{baseId}/{tableId}", a.listRecords).Methods("GET", "OPTIONS")
 	a.Router.HandleFunc("/api/v0/{baseId}/{tableId}/{recordId}", a.getRecords).Methods("GET", "OPTIONS")
+	a.Router.HandleFunc("/api/v0/{baseId}/{tableId}/{recordId}/comments", a.listComments).Methods("GET", "OPTIONS")
 	// Swagger
 	a.Router.PathPrefix("/docs").Handler(httpSwagger.WrapHandler)
 }
