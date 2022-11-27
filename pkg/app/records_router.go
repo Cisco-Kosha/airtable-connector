@@ -8,7 +8,7 @@ import (
 	"github.com/kosha/airtable-connector/pkg/httpclient"
 )
 
-// getRecords godoc
+// ListRecords godoc
 // @Summary Get airtable
 // @Description Get Records
 // @Tags agents
@@ -31,7 +31,7 @@ func (a *App) listRecords(w http.ResponseWriter, r *http.Request) {
 	respondWithJSON(w, http.StatusOK, agents)
 }
 
-// getRecords godoc
+// getRecord godoc
 // @Summary Get airtable
 // @Description Get Records
 // @Tags agents
@@ -50,7 +50,7 @@ func (a *App) getRecords(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Methods", "*")
 	vars := mux.Vars(r)
 	base_id := vars["baseId"]
-	table_id := vars["tableIdOrName"]
+	table_id := vars["tableId"]
 	recordId := vars["recordId"]
 	generated_url := a.Cfg.GetAirtableURL() + "/" + base_id + "/" + table_id + "/" + recordId
 	fmt.Println(generated_url)

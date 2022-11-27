@@ -13,7 +13,7 @@ type Config struct {
 func Get() *Config {
 	conf := &Config{}
 
-	flag.StringVar(&conf.personalAccessToken, "apiKey", os.Getenv("ACCESS_TOKEN"), "Airtable Access token")
+	flag.StringVar(&conf.personalAccessToken, "AccessToken", os.Getenv("ACCESSTOKEN"), "Airtable Access token")
 	flag.StringVar(&conf.domainName, "AirtableDomainName", os.Getenv("DOMAIN_NAME"), "Airtable Domain Name")
 
 	flag.Parse()

@@ -25,24 +25,19 @@ func makeHttpReq(token string, req *http.Request) []byte {
 	}
 	defer resp.Body.Close()
 	bodyBytes, _ := ioutil.ReadAll(resp.Body)
-
 	return bodyBytes
 }
 
-func ListRecords(url string, apiKey string) *models.Records {
+func ListRecords(url string, apiKey string) *models.RecordsStruct {
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		fmt.Println(err)
 		return nil
 	}
-	var records *models.Records
+	var records *models.RecordsStruct
 
 	res := makeHttpReq(apiKey, req)
-
-	// Convert response body to target struct
-	fmt.Println(res)
-
 	err = json.Unmarshal(res, &records)
 	if err != nil {
 		fmt.Println(err)
@@ -51,17 +46,16 @@ func ListRecords(url string, apiKey string) *models.Records {
 	return records
 }
 
-func GetRecords(url string, apiKey string) *models.Records {
+func GetRecords(url string, apiKey string) *models.Record {
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		fmt.Println(err)
 		return nil
 	}
-	var records *models.Records
+	var records *models.Record
 
 	res := makeHttpReq(apiKey, req)
 
-	// Convert response body to target struct
 	err = json.Unmarshal(res, &records)
 	if err != nil {
 		fmt.Println(err)

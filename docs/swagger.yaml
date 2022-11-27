@@ -23,7 +23,7 @@ info:
   contact:
     email: eti@cisco.io
     name: API Support
-  description: This is a Kosha REST serice for exposing many freshservice features
+  description: This is a Kosha REST serice for exposing many airtable features
     as REST APIs with better consistency, observability etc
   termsOfService: http://swagger.io/terms/
   title: Airtable Connector API
