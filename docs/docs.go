@@ -107,7 +107,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.Records"
+                            "$ref": "#/definitions/models.Record"
                         }
                     }
                 }
@@ -146,7 +146,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.Records"
+                            "$ref": "#/definitions/models.RecordsStruct"
                         }
                     }
                 }
@@ -154,7 +154,7 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "models.Records": {
+        "models.Record": {
             "type": "object",
             "properties": {
                 "createdTime": {
@@ -179,6 +179,42 @@ const docTemplate = `{
                 },
                 "id": {
                     "type": "string"
+                }
+            }
+        },
+        "models.RecordsStruct": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "createdTime": {
+                                "type": "string"
+                            },
+                            "fields": {
+                                "type": "object",
+                                "properties": {
+                                    "End date": {
+                                        "type": "string"
+                                    },
+                                    "Field 3": {
+                                        "type": "string"
+                                    },
+                                    "Field 4": {
+                                        "type": "string"
+                                    },
+                                    "Projects": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "id": {
+                                "type": "string"
+                            }
+                        }
+                    }
                 }
             }
         }

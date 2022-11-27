@@ -100,7 +100,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.Records"
+                            "$ref": "#/definitions/models.Record"
                         }
                     }
                 }
@@ -139,7 +139,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.Records"
+                            "$ref": "#/definitions/models.RecordsStruct"
                         }
                     }
                 }
@@ -147,7 +147,7 @@
         }
     },
     "definitions": {
-        "models.Records": {
+        "models.Record": {
             "type": "object",
             "properties": {
                 "createdTime": {
@@ -172,6 +172,42 @@
                 },
                 "id": {
                     "type": "string"
+                }
+            }
+        },
+        "models.RecordsStruct": {
+            "type": "object",
+            "properties": {
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "createdTime": {
+                                "type": "string"
+                            },
+                            "fields": {
+                                "type": "object",
+                                "properties": {
+                                    "End date": {
+                                        "type": "string"
+                                    },
+                                    "Field 3": {
+                                        "type": "string"
+                                    },
+                                    "Field 4": {
+                                        "type": "string"
+                                    },
+                                    "Projects": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "id": {
+                                "type": "string"
+                            }
+                        }
+                    }
                 }
             }
         }

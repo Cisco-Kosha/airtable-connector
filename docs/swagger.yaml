@@ -1,6 +1,6 @@
 basePath: /
 definitions:
-  models.Records:
+  models.Record:
     properties:
       createdTime:
         type: string
@@ -18,12 +18,35 @@ definitions:
       id:
         type: string
     type: object
+  models.RecordsStruct:
+    properties:
+      records:
+        items:
+          properties:
+            createdTime:
+              type: string
+            fields:
+              properties:
+                End date:
+                  type: string
+                Field 3:
+                  type: string
+                Field 4:
+                  type: string
+                Projects:
+                  type: string
+              type: object
+            id:
+              type: string
+          type: object
+        type: array
+    type: object
 host: localhost:8012
 info:
   contact:
     email: eti@cisco.io
     name: API Support
-  description: This is a Kosha REST serice for exposing many airtable features
+  description: This is a Kosha REST serice for exposing many freshservice features
     as REST APIs with better consistency, observability etc
   termsOfService: http://swagger.io/terms/
   title: Airtable Connector API
@@ -51,7 +74,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.Records'
+            $ref: '#/definitions/models.RecordsStruct'
       summary: Get airtable
       tags:
       - agents
@@ -82,7 +105,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.Records'
+            $ref: '#/definitions/models.Record'
       summary: Get airtable
       tags:
       - agents

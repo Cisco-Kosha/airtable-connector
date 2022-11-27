@@ -14,7 +14,7 @@ import (
 // @Tags agents
 // @Accept  json
 // @Produce  json
-// @Success 200 {object} models.Records
+// @Success 200 {object} models.RecordsStruct
 // @Param baseId path string true "Base Id"
 // @Param tableId path string true "Table Id"
 // @Router /api/v0/{baseId}/{tableId} [get]
@@ -40,7 +40,7 @@ func (a *App) listRecords(w http.ResponseWriter, r *http.Request) {
 // @Param baseId path string true "Base Id"
 // @Param tableIdOrName path string true "Table Id"
 // @Param recordId path string true "Base Id"
-// @Success 200 {object} models.Records
+// @Success 200 {object} models.Record
 // @Router /api/v0/{baseId}/{tableIdOrName}/{recordId} [get]
 func (a *App) getRecords(w http.ResponseWriter, r *http.Request) {
 
