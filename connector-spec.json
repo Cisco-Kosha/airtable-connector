@@ -21,7 +21,7 @@
       "required": true,
       "description": "Company name registered with airtable account",
       "example": "acmecorp",
-      "helpSection": "Enter the comapny name that you provided when you signed up to Freshservice \n If your Freshservice account URL is: acmecorp.freshservice.com then your domain name is acmecorp"
+      "helpSection": "Enter the comapny name that you provided when you signed up to Freshservice \n If your Freshservice account URL is: domainname.airtable.com then your domain name is acmecorp"
     }
   ]
 }
