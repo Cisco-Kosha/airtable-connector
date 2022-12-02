@@ -100,12 +100,11 @@ func (a *App) createRecords(w http.ResponseWriter, r *http.Request) {
 // @Description delete a record for the airtable
 // @Description Please refer to https://airtable.com/developers/web/api/create-records for more parameter options.
 // @Tags deleteRecords
-// @Accept json
 // @Produce json
-// @Param project body models.Record false "Enter project risk properties"
+// @Param project body models.Record false "Enter create, update and delete records"
 // @Param baseId path string true "Base Id"
 // @Param tableId path string true "Table Id"
-// @Param RecordId path string true "Record Id"
+// @Param recordId path string true "Record Id"
 // @Success 200
 // @Router /api/v0/{baseId}/{tableId}/{recordId} [delete]
 func (a *App) deleteRecords(w http.ResponseWriter, r *http.Request) {
@@ -142,7 +141,7 @@ func (a *App) deleteRecords(w http.ResponseWriter, r *http.Request) {
 // @Param project body models.Record false "Enter project risk properties"
 // @Param baseId path string true "Base Id"
 // @Param tableId path string true "Table Id"
-// @Param RecordId path string true "Record Id"
+// @Param recordId path string true "Record Id"
 // @Success 200
 // @Router /api/v0/{baseId}/{tableId}/{recordId} [put]
 func (a *App) updateRecords(w http.ResponseWriter, r *http.Request) {

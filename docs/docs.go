@@ -302,7 +302,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "Record Id",
-                        "name": "RecordId",
+                        "name": "recordId",
                         "in": "path",
                         "required": true
                     }
@@ -315,9 +315,6 @@ const docTemplate = `{
             },
             "delete": {
                 "description": "delete a record for the airtable\nPlease refer to https://airtable.com/developers/web/api/create-records for more parameter options.",
-                "consumes": [
-                    "application/json"
-                ],
                 "produces": [
                     "application/json"
                 ],
@@ -327,7 +324,7 @@ const docTemplate = `{
                 "summary": "delete a record for a project",
                 "parameters": [
                     {
-                        "description": "Enter project risk properties",
+                        "description": "Enter create, update and delete records",
                         "name": "project",
                         "in": "body",
                         "schema": {
@@ -351,7 +348,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "Record Id",
-                        "name": "RecordId",
+                        "name": "recordId",
                         "in": "path",
                         "required": true
                     }
@@ -422,7 +419,7 @@ const docTemplate = `{
                             "mentioned": {
                                 "type": "object",
                                 "properties": {
-                                    "usrL2PNC5o3H4lBEi": {
+                                    "userId": {
                                         "type": "object",
                                         "properties": {
                                             "displayName": {
@@ -450,6 +447,23 @@ const docTemplate = `{
                 "offset": {}
             }
         },
+        "models.Field": {
+            "type": "object",
+            "properties": {
+                "End date": {
+                    "type": "string"
+                },
+                "Field 3": {
+                    "type": "string"
+                },
+                "Field 4": {
+                    "type": "string"
+                },
+                "Projects": {
+                    "type": "string"
+                }
+            }
+        },
         "models.Record": {
             "type": "object",
             "properties": {
@@ -457,21 +471,7 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "fields": {
-                    "type": "object",
-                    "properties": {
-                        "End date": {
-                            "type": "string"
-                        },
-                        "Field 3": {
-                            "type": "string"
-                        },
-                        "Field 4": {
-                            "type": "string"
-                        },
-                        "Projects": {
-                            "type": "string"
-                        }
-                    }
+                    "$ref": "#/definitions/models.Field"
                 },
                 "id": {
                     "type": "string"
