@@ -123,7 +123,7 @@ func DeleteRecord(url string, body []byte, apiKey string) (string, error) {
 }
 
 func UpdateRecord(url string, body []byte, apiKey string) (string, error) {
-	req, err := http.NewRequest("UPDATE", url, bytes.NewReader(body))
+	req, err := http.NewRequest("PUT", url, bytes.NewReader(body))
 	req.Header.Set("Content-Type", "application/json")
 	if err != nil {
 		return "", err
