@@ -23,7 +23,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                 "type": "string"
+                  "$ref": "#/components/schemas/models.BasesStruct"
                 }
               }
             },
@@ -37,5 +37,375 @@
         "summary": "Get airtable"
       }
     },
+    "/api/v0/specification/list": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "bad request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "permission denied"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "not found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "internal server error"
+          }
+        },
+        "tags": [
+          "specification"
+        ],
+        "description": "Get all environment variables that need to be supplied",
+        "summary": "Get details of the connector specification"
+      }
+    },
+    "/api/v0/{baseId}/{tableIdOrName}/{recordId}": {
+      "get": {
+        "parameters": [
+          {
+            "description": "Base Id",
+            "in": "path",
+            "name": "baseId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Table Id",
+            "in": "path",
+            "name": "tableIdOrName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Base Id",
+            "in": "path",
+            "name": "recordId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/models.Record"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Records"
+        ],
+        "description": "Get Records",
+        "summary": "Get airtable"
+      }
+    },
+    "/api/v0/{baseId}/{tableIdOrName}/{recordId}/comments": {
+      "get": {
+        "parameters": [
+          {
+            "description": "Base Id",
+            "in": "path",
+            "name": "baseId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Table Id",
+            "in": "path",
+            "name": "tableIdOrName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Base Id",
+            "in": "path",
+            "name": "recordId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/models.CommentStruct"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Comments"
+        ],
+        "description": "Get Comments",
+        "summary": "Get airtable"
+      }
+    },
+    "/api/v0/{baseId}/{tableId}": {
+      "get": {
+        "parameters": [
+          {
+            "description": "Base Id",
+            "in": "path",
+            "name": "baseId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Table Id",
+            "in": "path",
+            "name": "tableId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/models.RecordsStruct"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Records"
+        ],
+        "description": "Get Records",
+        "summary": "Get airtable"
+      },
+    },
+  },
+  "components": {
+    "requestBodies": {
+      "models.Record": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/models.Record"
+            }
+          }
+        },
+        "description": "Enter project risk properties"
+      }
+    },
+    "schemas": {
+      "models.BasesStruct": {
+        "properties": {
+          "bases": {
+            "items": {
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "permissionLevel": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "offset": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "models.CommentStruct": {
+        "properties": {
+          "comments": {
+            "items": {
+              "properties": {
+                "author": {
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "createdTime": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "lastUpdatedTime": {},
+                "mentioned": {
+                  "properties": {
+                    "userId": {
+                      "properties": {
+                        "displayName": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                },
+                "text": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "offset": {}
+        },
+        "type": "object"
+      },
+      "models.Field": {
+        "properties": {
+          "End date": {
+            "type": "string"
+          },
+          "Field 3": {
+            "type": "string"
+          },
+          "Field 4": {
+            "type": "string"
+          },
+          "Projects": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "models.Record": {
+        "properties": {
+          "createdTime": {
+            "type": "string"
+          },
+          "fields": {
+            "$ref": "#/components/schemas/models.Field"
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "models.RecordsStruct": {
+        "properties": {
+          "records": {
+            "items": {
+              "properties": {
+                "createdTime": {
+                  "type": "string"
+                },
+                "fields": {
+                  "properties": {
+                    "End date": {
+                      "type": "string"
+                    },
+                    "Field 3": {
+                      "type": "string"
+                    },
+                    "Field 4": {
+                      "type": "string"
+                    },
+                    "Projects": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "id": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      }
     }
+  }
 }
