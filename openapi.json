@@ -16,7 +16,7 @@
     }
   ],
   "paths": {
-    "/api/v0/meta/bases": {
+    "/v0/meta/bases": {
       "get": {
         "responses": {
           "200": {
@@ -37,7 +37,7 @@
         "summary": "Get airtable"
       }
     },
-    "/api/v0/specification/list": {
+    "/v0/specification/list": {
       "get": {
         "responses": {
           "200": {
@@ -98,7 +98,7 @@
         "summary": "Get details of the connector specification"
       }
     },
-    "/api/v0/{baseId}/{tableIdOrName}/{recordId}": {
+    "/v0/{baseId}/{tableIdOrName}/{recordId}": {
       "get": {
         "parameters": [
           {
@@ -120,7 +120,7 @@
             }
           },
           {
-            "description": "Base Id",
+            "description": "Record Id",
             "in": "path",
             "name": "recordId",
             "required": true,
@@ -145,10 +145,121 @@
           "Records"
         ],
         "description": "Get Records",
-        "summary": "Get airtable"
+        "summary": "Get Record"
+      }, 
+      "put": {
+        "parameters": [
+          {
+            "description": "Base Id",
+            "in": "path",
+            "name": "baseId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Table Id",
+            "in": "path",
+            "name": "tableIdOrName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Record Id",
+            "in": "path",
+            "name": "recordId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/models.Record"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/models.Record"
+              }
+            }
+          }
+        },
+
+        "tags": [
+          "Records"
+        ],
+        "description": "Update Records",
+        "summary": "Update Record"
       }
+
     },
-    "/api/v0/{baseId}/{tableIdOrName}/{recordId}/comments": {
+    "/v0/{baseId}/{tableIdOrName}": {
+      "post": {
+        "parameters": [
+          {
+            "description": "Base Id",
+            "in": "path",
+            "name": "baseId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Table Id",
+            "in": "path",
+            "name": "tableIdOrName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/models.Record"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/models.Record"
+              }
+            }
+          }
+        },
+        
+        "tags": [
+          "Records"
+        ],
+        "description": "Create Records",
+        "summary": "Creates records"
+      }
+      
+    },
+    "/v0/{baseId}/{tableIdOrName}/{recordId}/comments": {
       "get": {
         "parameters": [
           {
@@ -198,7 +309,7 @@
         "summary": "Get airtable"
       }
     },
-    "/api/v0/{baseId}/{tableId}": {
+    "/v0/{baseId}/{tableId}": {
       "get": {
         "parameters": [
           {
@@ -237,8 +348,8 @@
         ],
         "description": "Get Records",
         "summary": "Get airtable"
-      },
-    },
+      }
+    }
   },
   "components": {
     "requestBodies": {
