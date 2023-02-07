@@ -78,7 +78,7 @@
             "schema": {
               "type": "string"
             }
-          },
+          }
         ],
         "responses": {
           "200": {
@@ -562,8 +562,8 @@
         ],
         "description": "Get Records",
         "summary": "Get airtable"
-      },
-    },
+      }
+    }
   },
   "components": {
     "requestBodies": {
