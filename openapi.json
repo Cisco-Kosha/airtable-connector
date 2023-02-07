@@ -110,6 +110,97 @@
       }
 
     },
+
+    "/v0/meta/bases/{baseId}/tables/{tableId}/fields": {
+      "post": {
+        "parameters": [
+          {
+            "description": "Base Id",
+            "in": "path",
+            "name": "baseId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Table Id",
+            "in": "path",
+            "name": "tableId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/models.Field"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Fields"
+        ],
+        "description": "Create Fields",
+        "summary": "Create Fields"
+      }, 
+      "put": {
+        "parameters": [
+          {
+            "description": "Base Id",
+            "in": "path",
+            "name": "baseId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },{
+            "description": "Table Id",
+            "in": "path",
+            "name": "tableId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/models.Field"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/models.Field"
+              }
+            }
+          }
+        },
+
+        "tags": [
+          "Fields"
+        ],
+        "description": "Update Fields",
+        "summary": "Update Fields"
+      }
+
+    },
     "/v0/specification/list": {
       "get": {
         "responses": {
@@ -382,6 +473,7 @@
         "summary": "Get airtable"
       }
     },
+    
     "/v0/{baseId}/{tableId}": {
       "get": {
         "parameters": [
