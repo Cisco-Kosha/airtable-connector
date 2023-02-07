@@ -37,6 +37,79 @@
         "summary": "Get airtable"
       }
     },
+    "/v0/meta/bases/{baseId}/tables": {
+      "post": {
+        "parameters": [
+          {
+            "description": "Base Id",
+            "in": "path",
+            "name": "baseId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/models.BasesStruct"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Records"
+        ],
+        "description": "Create Bases",
+        "summary": "Create Bases"
+      }, 
+      "put": {
+        "parameters": [
+          {
+            "description": "Base Id",
+            "in": "path",
+            "name": "baseId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/models.BasesStruct"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/models.BasesStruct"
+              }
+            }
+          }
+        },
+
+        "tags": [
+          "Bases"
+        ],
+        "description": "Update Bases",
+        "summary": "Update Bases"
+      }
+
+    },
     "/v0/specification/list": {
       "get": {
         "responses": {
