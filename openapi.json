@@ -78,7 +78,7 @@
             "schema": {
               "type": "string"
             }
-          }
+          },
         ],
         "responses": {
           "200": {
@@ -311,6 +311,55 @@
         "description": "Get Records",
         "summary": "Get Record"
       }, 
+    "delete": {
+        "parameters": [
+          {
+            "description": "Base Id",
+            "in": "path",
+            "name": "baseId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Table Id",
+            "in": "path",
+            "name": "tableIdOrName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Record Id",
+            "in": "path",
+            "name": "recordId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/models.Record"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Records"
+        ],
+        "description": "Delete Records",
+        "summary": "Delete Record"
+      }, 
+
       "put": {
         "parameters": [
           {
@@ -513,8 +562,8 @@
         ],
         "description": "Get Records",
         "summary": "Get airtable"
-      }
-    }
+      },
+    },
   },
   "components": {
     "requestBodies": {
