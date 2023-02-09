@@ -50,6 +50,16 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/models.BasesStruct"
+              }
+            }
+          }
+        },
+
         "responses": {
           "200": {
             "content": {
@@ -133,6 +143,16 @@
             }
           }
         ],
+         "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/models.BasesStruct"
+              }
+            }
+          }
+        },
+        
         "responses": {
           "200": {
             "content": {
