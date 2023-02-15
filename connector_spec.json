@@ -2,27 +2,39 @@
   "version": "2.0.0",
   "fields": [
     {
-      "field": "ACCESS_TOKEN",
-      "displayName": "Airtable  Access Token",
-      "type": "String",
-      "minLength": 6,
-      "maxLength": 20,
-      "required": true,
-      "description": "Airtable  Access Token",
-      "example": "NPfWE2p1H7yBzIXnRB",
-      "helpSection": "Login to your airtable account \n Go to Dashboard -> Edit Profile \n To the right side, you should see the personal access token generated associated with your user account"
-    },
-    {
-      "field": "DOMAIN_NAME",
-      "displayName": "Airtable Domain Name",
+      "field": "API_KEY",
+      "displayName": "Airtable API Key",
       "type": "String",
       "minLength": 4,
       "maxLength": 60,
       "required": true,
-      "description": "Company name registered with airtable account",
-      "example": "acmecorp",
+      "description": "Airtable API Key",
+      "example": "NPfWE2p1H7yBzIXnRB",
+      "helpSection": "Login to your airtable account \n Go to Dashboard -> Edit Profile \n To the right side, you should see the personal access token generated associated with your user account"
+    },
+    {
+      "field": "AUTH_TYPE",
+      "displayName": "Airtable Auth Type",
+      "type": "String",
+      "minLength": 4,
+      "maxLength": 60,
+      "required": true,
+      "description": "Airtable API Auth Type",
+      "default": "API_KEY",
+      "example": "API_KEY",
+      "helpSection": ""
+    },
+    {
+      "field": "SERVER_URL",
+      "displayName": "Airtable Server URL",
+      "type": "String",
+      "minLength": 4,
+      "maxLength": 60,
+      "required": true,
+      "description": "Airtable API Server URL",
       "default": "https://api.airtable.com",
-      "helpSection": "Enter the comapny name that you provided when you signed up to airtable \n If your airtable account URL is: domainname.airtable.com then your domain name is acmecorp"
+      "example": "https://api.airtable.com",
+      "helpSection": "Use the default value https://api.airtable.com"
     }
   ]
 }
