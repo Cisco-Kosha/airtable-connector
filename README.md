@@ -1,27 +1,23 @@
 # Kosha Airtable Connector
 
-Airtable is a spreadsheet-database hybrid, with the features of a database but applied to a spreadsheet. The fields in an Airtable table are similar to cells in a spreadsheet, but have types such as 'checkbox', 'phone number', and 'drop-down list', and can reference file attachments like images.
+With Airtable you can create spreadsheets that function like databases. The fields in an Airtable table are similar to cells in a spreadsheet but have types such as 'checkbox', 'phone number', and 'drop-down list', and the cells can reference file attachments, such as images.
 
-Users can create a database, set up column types, add records, link tables to one another, collaborate, sort records and publish views to external websites.
-
+You can create a database, set up column types, add records, link tables to one another, collaborate, sort records, and publish views to external websites.
 
 ![airtable](images/test.png)
 
-Features:
+## Useful Actions 
 
-* Supports CRUD operations on Airtable records.
-* Supports CRUD operations on Airtable tables.
-* Supports CRUD operations on Airtable schema.
+Use the Airtable connector to integrate your Airtable data with any external system. The Airtable API follows REST semantics, encodes objects in JSON, and uses standard HTTP response codes.
 
-The user can use the connector to integrate your data in Airtable with any external system. The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes.
+The Airtable API supports CRUD operations on Airtable records, tables, and schemas.
 
-The required configuration is your personal access token tied to your Airtable connector and associated scopes.
+Refer to the Airtable connector [API specification](openapi.json) for details.
 
-## OpenAPI Specification
+## Example Usage
 
-Full connector API specification can be found at [here](openapi.json).
-
+< sdk example? >
 
 ## Authentication
 
-The required configuration is your personal access token tied to your Airtable connector and associated scopes.
+Configuration requires your personal access token tied to your Airtable connector and associated scopes.
