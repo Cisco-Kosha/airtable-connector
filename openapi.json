@@ -519,7 +519,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object"
+                 "$ref": "#/components/schemas/models.CreateRecords"
               }
             }
           }
@@ -639,6 +639,22 @@
       }
     },
     "schemas": {
+      "models.CreateRecords": {
+        "type": "object",
+        "properties": {
+          "fields": {
+            "type": "object",
+            "properties": {
+              "column_name": {
+                "type": "string"
+              },
+              "column_value": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
       "models.BasesStruct": {
         "properties": {
           "bases": {
