@@ -14,21 +14,13 @@ You can use the Kosha Airtable connector to perform to manage records, tables, f
 
 Refer to the Kosha Airtable connector [API specification](openapi.json) for details.
 
-### Managing Records
+* Managing Records: A record is an individual unit in a table. Use the Airtable API to create, manage and delete records.
 
-A record is an individual unit in a table. Use the Airtable API to create, manage and delete records.
+* Managing Fields: Fields are the units in records you use to store custom data. Use the Airtable API to create and update fields.
 
-### Managing Fields
+* Managing Tables: Tables are structural units that enable you to consistently store your Airtable data. 
 
-Fields are the units in records you use to store custom data. Use the Airtable API to create and update fields.
-
-### Managing Tables
-
-Tables are structural units that enable you to consistently store your Airtable data. 
-
-### Managing Bases
-
-In Airtable a base—or database—is central place to store your data, including tables. You can use the API to list, get, and create bases. 
+* Managing Bases: In Airtable a base—or database—is central place to store your data, including tables. You can use the API to list, get, and create bases. 
 
 ## Example Usage
 
