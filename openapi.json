@@ -1,1056 +1,1039 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "contact": {
-      "email": "eti@cisco.io",
-      "name": "API Support"
-    },
-    "description": "This is a Kosha REST serice for exposing many airtable features as REST APIs with better consistency, observability etc",
-    "termsOfService": "http://swagger.io/terms/",
-    "title": "Airtable Connector API",
-    "version": "2.0"
-  },
-  "servers": [
-    {
-      "url": "/"
-    }
-  ],
-  "paths": {
-    "/v0/meta/bases": {
-      "get": {
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/models.BasesStruct"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "Bases"
-        ],
-        "description": "Get Bases",
-        "summary": "Get airtable bases"
-      }
-    },
-    "/v0/meta/bases/{baseId}/tables": {
-      "post": {
-        "parameters": [
-          {
-            "description": "Base Id",
-            "in": "path",
-            "name": "baseId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/meta/bases",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".bases[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/models.TablesStruct"
-              }
-            }
-          }
-        },
+	"openapi": "3.0.0",
+	"info": {
+		"contact": {
+			"email": "eti@cisco.io",
+			"name": "API Support"
+		},
+		"description": "This is a Kosha REST serice for exposing many airtable features as REST APIs with better consistency, observability etc",
+		"termsOfService": "http://swagger.io/terms/",
+		"title": "Airtable Connector API",
+		"version": "2.0"
+	},
+	"servers": [{
+		"url": "/"
+	}],
+	"paths": {
+		"/v0/meta/bases": {
+			"get": {
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/models.BasesStruct"
+								}
+							}
+						},
+						"description": "OK"
+					}
+				},
+				"tags": [
+					"Bases"
+				],
+				"description": "Get Bases",
+				"summary": "Get airtable bases"
+			}
+		},
+		"/v0/meta/bases/{baseId}/tables": {
+			"post": {
+				"parameters": [{
+					"description": "Base Id",
+					"in": "path",
+					"name": "baseId",
+					"required": true,
+					"schema": {
+						"type": "string"
+					},
+					"x-kosha-data-source": "/v0/meta/bases",
+					"x-kosha-data-type": "array",
+					"x-kosha-data-prefix": ".bases[]",
+					"x-kosha-data-label": "name",
+					"x-kosha-data-value": "id"
+				}],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/models.TablesStruct"
+							}
+						}
+					}
+				},
 
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/models.TablesStruct"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "Tables"
-        ],
-        "description": "Create Tables",
-        "summary": "Create Tables"
-      },
-      "get": {
-        "parameters": [
-          {
-            "description": "Base Id",
-            "in": "path",
-            "name": "baseId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/meta/bases",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".bases[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/models.TablesStruct"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "Tables"
-        ],
-        "description": "Get Tables",
-        "summary": "Get Tables"
-      },
-    },
-    "/v0/meta/bases/{baseId}/tables/{tableId}": {
-      "put": {
-        "parameters": [
-          {
-            "description": "Base Id",
-            "in": "path",
-            "name": "baseId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/meta/bases",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".bases[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          },
-          {
-            "description": "Table Id",
-            "in": "path",
-            "name": "tableId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".tables[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/models.TablesStruct"
-              }
-            }
-          }
-        },
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/models.TablesStruct"
+								}
+							}
+						},
+						"description": "OK"
+					}
+				},
+				"tags": [
+					"Tables"
+				],
+				"description": "Create Tables",
+				"summary": "Create Tables"
+			},
+			"get": {
+				"parameters": [{
+					"description": "Base Id",
+					"in": "path",
+					"name": "baseId",
+					"required": true,
+					"schema": {
+						"type": "string"
+					},
+					"x-kosha-data-source": "/v0/meta/bases",
+					"x-kosha-data-type": "array",
+					"x-kosha-data-prefix": ".bases[]",
+					"x-kosha-data-label": "name",
+					"x-kosha-data-value": "id"
+				}],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/models.TablesStruct"
+								}
+							}
+						},
+						"description": "OK"
+					}
+				},
+				"tags": [
+					"Tables"
+				],
+				"description": "Get Tables",
+				"summary": "Get Tables"
+			}
+		},
+		"/v0/meta/bases/{baseId}/tables/{tableId}": {
+			"put": {
+				"parameters": [{
+						"description": "Base Id",
+						"in": "path",
+						"name": "baseId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/meta/bases",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".bases[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					},
+					{
+						"description": "Table Id",
+						"in": "path",
+						"name": "tableId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".tables[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/models.TablesStruct"
+							}
+						}
+					}
+				},
 
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/models.TablesStruct"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "Tables"
-        ],
-        "description": "Update Table",
-        "summary": "Update Table"
-      },
-    },
-    "/v0/meta/bases/{baseId}/tables/{tableId}/fields": {
-      "post": {
-        "parameters": [
-          {
-            "description": "Base Id",
-            "in": "path",
-            "name": "baseId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/meta/bases",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".bases[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          },
-          {
-            "description": "Table Id",
-            "in": "path",
-            "name": "tableId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".tables[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          }
-        ],
-         "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/models.NewField"
-              }
-            }
-          }
-        },
-        
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/models.Field"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "Fields"
-        ],
-        "description": "Create Fields",
-        "summary": "Create Fields"
-      }, 
-      "put": {
-        "parameters": [
-          {
-            "description": "Base Id",
-            "in": "path",
-            "name": "baseId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/meta/bases",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".bases[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          },{
-            "description": "Table Id",
-            "in": "path",
-            "name": "tableId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".tables[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/models.Field"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/models.FieldsStruct"
-              }
-            }
-          }
-        },
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/models.TablesStruct"
+								}
+							}
+						},
+						"description": "OK"
+					}
+				},
+				"tags": [
+					"Tables"
+				],
+				"description": "Update Table",
+				"summary": "Update Table"
+			}
+		},
+		"/v0/meta/bases/{baseId}/tables/{tableId}/fields": {
+			"post": {
+				"parameters": [{
+						"description": "Base Id",
+						"in": "path",
+						"name": "baseId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/meta/bases",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".bases[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					},
+					{
+						"description": "Table Id",
+						"in": "path",
+						"name": "tableId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".tables[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/models.NewField"
+							}
+						}
+					}
+				},
 
-        "tags": [
-          "Fields"
-        ],
-        "description": "Update Fields",
-        "summary": "Update Fields"
-      }
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/models.Field"
+								}
+							}
+						},
+						"description": "OK"
+					}
+				},
+				"tags": [
+					"Fields"
+				],
+				"description": "Create Fields",
+				"summary": "Create Fields"
+			},
+			"put": {
+				"parameters": [{
+					"description": "Base Id",
+					"in": "path",
+					"name": "baseId",
+					"required": true,
+					"schema": {
+						"type": "string"
+					},
+					"x-kosha-data-source": "/v0/meta/bases",
+					"x-kosha-data-type": "array",
+					"x-kosha-data-prefix": ".bases[]",
+					"x-kosha-data-label": "name",
+					"x-kosha-data-value": "id"
+				}, {
+					"description": "Table Id",
+					"in": "path",
+					"name": "tableId",
+					"required": true,
+					"schema": {
+						"type": "string"
+					},
+					"x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
+					"x-kosha-data-type": "array",
+					"x-kosha-data-prefix": ".tables[]",
+					"x-kosha-data-label": "name",
+					"x-kosha-data-value": "id"
+				}],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/models.Field"
+								}
+							}
+						},
+						"description": "OK"
+					}
+				},
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/models.FieldsStruct"
+							}
+						}
+					}
+				},
 
-    },
-    "/v0/specification/list": {
-      "get": {
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            },
-            "description": "OK"
-          },
-          "400": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "description": "bad request"
-          },
-          "403": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "description": "permission denied"
-          },
-          "404": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "description": "not found"
-          },
-          "500": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "description": "internal server error"
-          }
-        },
-        "tags": [
-          "specification"
-        ],
-        "description": "Get all environment variables that need to be supplied",
-        "summary": "Get details of the connector specification"
-      }
-    },
-    "/v0/{baseId}/{tableIdOrName}/{recordId}": {
-      "get": {
-        "parameters": [
-          {
-            "description": "Base Id",
-            "in": "path",
-            "name": "baseId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/meta/bases",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".bases[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          },
-          {
-            "description": "Table Id",
-            "in": "path",
-            "name": "tableIdOrName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".tables[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          },
-          {
-            "description": "Record Id",
-            "in": "path",
-            "name": "recordId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/{baseId}/{tableId}",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".records[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/models.Record"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "Records"
-        ],
-        "description": "Get Records",
-        "summary": "Get Record"
-      }, 
-    "delete": {
-        "parameters": [
-          {
-            "description": "Base Id",
-            "in": "path",
-            "name": "baseId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/meta/bases",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".bases[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          },
-          {
-            "description": "Table Id",
-            "in": "path",
-            "name": "tableIdOrName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-             "x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".tables[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          },
-          {
-            "description": "Record Id",
-            "in": "path",
-            "name": "recordId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/{baseId}/{tableId}",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".records[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/models.Record"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "Records"
-        ],
-        "description": "Delete Records",
-        "summary": "Delete Record"
-      }, 
+				"tags": [
+					"Fields"
+				],
+				"description": "Update Fields",
+				"summary": "Update Fields"
+			}
 
-      "put": {
-        "parameters": [
-          {
-            "description": "Base Id",
-            "in": "path",
-            "name": "baseId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/meta/bases",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".bases[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          },
-          {
-            "description": "Table Id",
-            "in": "path",
-            "name": "tableIdOrName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".tables[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          },
-          {
-            "description": "Record Id",
-            "in": "path",
-            "name": "recordId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/{baseId}/{tableId}",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".records[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/models.Record"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/models.Record"
-              }
-            }
-          }
-        },
+		},
+		"/v0/specification/list": {
+			"get": {
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object"
+								}
+							}
+						},
+						"description": "OK"
+					},
+					"400": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						},
+						"description": "bad request"
+					},
+					"403": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						},
+						"description": "permission denied"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						},
+						"description": "not found"
+					},
+					"500": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						},
+						"description": "internal server error"
+					}
+				},
+				"tags": [
+					"specification"
+				],
+				"description": "Get all environment variables that need to be supplied",
+				"summary": "Get details of the connector specification"
+			}
+		},
+		"/v0/{baseId}/{tableIdOrName}/{recordId}": {
+			"get": {
+				"parameters": [{
+						"description": "Base Id",
+						"in": "path",
+						"name": "baseId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/meta/bases",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".bases[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					},
+					{
+						"description": "Table Id",
+						"in": "path",
+						"name": "tableIdOrName",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".tables[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					},
+					{
+						"description": "Record Id",
+						"in": "path",
+						"name": "recordId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/{baseId}/{tableId}",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".records[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/models.Record"
+								}
+							}
+						},
+						"description": "OK"
+					}
+				},
+				"tags": [
+					"Records"
+				],
+				"description": "Get Records",
+				"summary": "Get Record"
+			},
+			"delete": {
+				"parameters": [{
+						"description": "Base Id",
+						"in": "path",
+						"name": "baseId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/meta/bases",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".bases[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					},
+					{
+						"description": "Table Id",
+						"in": "path",
+						"name": "tableIdOrName",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".tables[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					},
+					{
+						"description": "Record Id",
+						"in": "path",
+						"name": "recordId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/{baseId}/{tableId}",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".records[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/models.Record"
+								}
+							}
+						},
+						"description": "OK"
+					}
+				},
+				"tags": [
+					"Records"
+				],
+				"description": "Delete Records",
+				"summary": "Delete Record"
+			},
 
-        "tags": [
-          "Records"
-        ],
-        "description": "Update Records",
-        "summary": "Update Record"
-      }
+			"put": {
+				"parameters": [{
+						"description": "Base Id",
+						"in": "path",
+						"name": "baseId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/meta/bases",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".bases[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					},
+					{
+						"description": "Table Id",
+						"in": "path",
+						"name": "tableIdOrName",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".tables[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					},
+					{
+						"description": "Record Id",
+						"in": "path",
+						"name": "recordId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/{baseId}/{tableId}",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".records[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/models.Record"
+								}
+							}
+						},
+						"description": "OK"
+					}
+				},
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/models.Record"
+							}
+						}
+					}
+				},
 
-    },
-    "/v0/{baseId}/{tableIdOrName}": {
-      "post": {
-        "parameters": [
-          {
-            "description": "Base Id",
-            "in": "path",
-            "name": "baseId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/meta/bases",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".bases[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          },
-          {
-            "description": "Table Id",
-            "in": "path",
-            "name": "tableIdOrName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".tables[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            },
-            "description": "OK"
-          },
-          "400": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "description": "bad request"
-          },
-          "403": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "description": "permission denied"
-          },
-          "404": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "description": "not found"
-          },
-          "500": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "description": "internal server error"
-          }
-        },
+				"tags": [
+					"Records"
+				],
+				"description": "Update Records",
+				"summary": "Update Record"
+			}
 
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                 "$ref": "#/components/schemas/models.CreateRecords"
-              }
-            }
-          }
-        },
-        "tags": [
-          "Records"
-        ],
-        "description": "Create Records",
-        "summary": "Creates records"
-      }
-      
-    },
-    "/v0/{baseId}/{tableIdOrName}/{recordId}/comments": {
-      "get": {
-        "parameters": [
-          {
-            "description": "Base Id",
-            "in": "path",
-            "name": "baseId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/meta/bases",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".bases[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          },
-          {
-            "description": "Table Id",
-            "in": "path",
-            "name": "tableIdOrName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".tables[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          },
-          {
-            "description": "Base Id",
-            "in": "path",
-            "name": "recordId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/{baseId}/{tableId}",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".records[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/models.CommentStruct"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "Comments"
-        ],
-        "description": "List Comments",
-        "summary": "List comments for the record from newest to oldest."
-      }
-    },
-    
-    "/v0/{baseId}/{tableId}": {
-      "get": {
-        "parameters": [
-          {
-            "description": "Base Id",
-            "in": "path",
-            "name": "baseId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/meta/bases",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".bases[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          },
-          {
-            "description": "Table Id",
-            "in": "path",
-            "name": "tableId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
-            "x-kosha-data-type": "array",
-            "x-kosha-data-prefix": ".tables[]",
-            "x-kosha-data-label": "name",
-            "x-kosha-data-value": "id",
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/models.RecordsStruct"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "Records"
-        ],
-        "description": "List Records",
-        "summary": "List records"
-      }
-    }
-  },
-  "components": {
-    "requestBodies": {
-      "models.Record": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/models.Record"
-            }
-          }
-        },
-        "description": "Enter project risk properties"
-      }
-    },
-    "schemas": {
-      "models.TablesStruct": {
-        "type": "object",
-        "properties": {
-          "description": {
-            "type": "string"
-          },
-          "fields": {
-            "type": "array",
-            "items":
-              {
-                "type": "object",
-                "properties": {
-                  "description": {
-                    "type": "string"
-                  },
-                  "name": {
-                    "type": "string"
-                  },
-                  "type": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "description",
-                  "name",
-                  "type"
-                ]
-              }
-          },
-          "name": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "description",
-          "fields",
-          "name"
-        ]
-      },
-      "models.CreateRecords": {
-        "type": "object",
-        "properties": {
-          "fields": {
-            "type": "object",
-            "properties": {
-              "column_name": {
-                "type": "string"
-              },
-              "column_value": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      },
-      "models.FieldsStruct": {
-        "type": "object",
-        "properties": {
-          "description": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "description",
-          "name"
-        ]
-      },
-      "models.NewField": {
-        "type": "object",
-        "properties": {
-          "description": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "options": {
-            "type": "object",
-            "properties": {
-              "color": {
-                "type": "string"
-              },
-              "icon": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "color",
-              "icon"
-            ]
-          },
-          "type": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "description",
-          "name",
-          "type"
-        ]
-      },
-      "models.BasesStruct": {
-        "properties": {
-          "bases": {
-            "items": {
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "permissionLevel": {
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          },
-          "offset": {
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "models.CommentStruct": {
-        "properties": {
-          "comments": {
-            "items": {
-              "properties": {
-                "author": {
-                  "properties": {
-                    "email": {
-                      "type": "string"
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "name": {
-                      "type": "string"
-                    }
-                  },
-                  "type": "object"
-                },
-                "createdTime": {
-                  "type": "string"
-                },
-                "id": {
-                  "type": "string"
-                },
-                "lastUpdatedTime": {},
-                "mentioned": {
-                  "properties": {
-                    "userId": {
-                      "properties": {
-                        "displayName": {
-                          "type": "string"
-                        },
-                        "email": {
-                          "type": "string"
-                        },
-                        "id": {
-                          "type": "string"
-                        },
-                        "type": {
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    }
-                  },
-                  "type": "object"
-                },
-                "text": {
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          },
-          "offset": {}
-        },
-        "type": "object"
-      },
-      "models.Field": {
-        "type": "object",
-        "properties": {
-          "description": {
-            "type": "string"
-          },
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "description",
-          "id",
-          "name",
-          "type"
-        ]
-      },
-      "models.Record": {
-        "properties": {
-          "createdTime": {
-            "type": "string"
-          },
-          "fields": {
-            "$ref": "#/components/schemas/models.Field"
-          },
-          "id": {
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "models.RecordsStruct": {
-        "properties": {
-          "records": {
-            "items": {
-              "properties": {
-                "createdTime": {
-                  "type": "string"
-                },
-                "fields": {
-                  "properties": {
-                    "Field": {
-                      "type": "string"
-                    }
-                  },
-                  "type": "object"
-                },
-                "id": {
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          }
-        },
-        "type": "object"
-      }
-    }
-  }
+		},
+		"/v0/{baseId}/{tableIdOrName}": {
+			"post": {
+				"parameters": [{
+						"description": "Base Id",
+						"in": "path",
+						"name": "baseId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/meta/bases",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".bases[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					},
+					{
+						"description": "Table Id",
+						"in": "path",
+						"name": "tableIdOrName",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".tables[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object"
+								}
+							}
+						},
+						"description": "OK"
+					},
+					"400": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						},
+						"description": "bad request"
+					},
+					"403": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						},
+						"description": "permission denied"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						},
+						"description": "not found"
+					},
+					"500": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						},
+						"description": "internal server error"
+					}
+				},
+
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/models.CreateRecords"
+							}
+						}
+					}
+				},
+				"tags": [
+					"Records"
+				],
+				"description": "Create Records",
+				"summary": "Creates records"
+			}
+
+		},
+		"/v0/{baseId}/{tableIdOrName}/{recordId}/comments": {
+			"get": {
+				"parameters": [{
+						"description": "Base Id",
+						"in": "path",
+						"name": "baseId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/meta/bases",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".bases[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					},
+					{
+						"description": "Table Id",
+						"in": "path",
+						"name": "tableIdOrName",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".tables[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					},
+					{
+						"description": "Base Id",
+						"in": "path",
+						"name": "recordId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/{baseId}/{tableId}",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".records[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/models.CommentStruct"
+								}
+							}
+						},
+						"description": "OK"
+					}
+				},
+				"tags": [
+					"Comments"
+				],
+				"description": "List Comments",
+				"summary": "List comments for the record from newest to oldest."
+			}
+		},
+
+		"/v0/{baseId}/{tableId}": {
+			"get": {
+				"parameters": [{
+						"description": "Base Id",
+						"in": "path",
+						"name": "baseId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/meta/bases",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".bases[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					},
+					{
+						"description": "Table Id",
+						"in": "path",
+						"name": "tableId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
+						"x-kosha-data-type": "array",
+						"x-kosha-data-prefix": ".tables[]",
+						"x-kosha-data-label": "name",
+						"x-kosha-data-value": "id"
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/models.RecordsStruct"
+								}
+							}
+						},
+						"description": "OK"
+					}
+				},
+				"tags": [
+					"Records"
+				],
+				"description": "List Records",
+				"summary": "List records"
+			}
+		}
+	},
+	"components": {
+		"requestBodies": {
+			"models.Record": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"$ref": "#/components/schemas/models.Record"
+						}
+					}
+				},
+				"description": "Enter project risk properties"
+			}
+		},
+		"schemas": {
+			"models.TablesStruct": {
+				"type": "object",
+				"properties": {
+					"description": {
+						"type": "string"
+					},
+					"fields": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"description": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string"
+								},
+								"type": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"description",
+								"name",
+								"type"
+							]
+						}
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"description",
+					"fields",
+					"name"
+				]
+			},
+			"models.CreateRecords": {
+				"type": "object",
+				"properties": {
+					"fields": {
+						"type": "object",
+						"properties": {
+							"column_name": {
+								"type": "string"
+							},
+							"column_value": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			},
+			"models.FieldsStruct": {
+				"type": "object",
+				"properties": {
+					"description": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"description",
+					"name"
+				]
+			},
+			"models.NewField": {
+				"type": "object",
+				"properties": {
+					"description": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"options": {
+						"type": "object",
+						"properties": {
+							"color": {
+								"type": "string"
+							},
+							"icon": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"color",
+							"icon"
+						]
+					},
+					"type": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"description",
+					"name",
+					"type"
+				]
+			},
+			"models.BasesStruct": {
+				"properties": {
+					"bases": {
+						"items": {
+							"properties": {
+								"id": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string"
+								},
+								"permissionLevel": {
+									"type": "string"
+								}
+							},
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"offset": {
+						"type": "string"
+					}
+				},
+				"type": "object"
+			},
+			"models.CommentStruct": {
+				"properties": {
+					"comments": {
+						"items": {
+							"properties": {
+								"author": {
+									"properties": {
+										"email": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"createdTime": {
+									"type": "string"
+								},
+								"id": {
+									"type": "string"
+								},
+								"lastUpdatedTime": {},
+								"mentioned": {
+									"properties": {
+										"userId": {
+											"properties": {
+												"displayName": {
+													"type": "string"
+												},
+												"email": {
+													"type": "string"
+												},
+												"id": {
+													"type": "string"
+												},
+												"type": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								"text": {
+									"type": "string"
+								}
+							},
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"offset": {}
+				},
+				"type": "object"
+			},
+			"models.Field": {
+				"type": "object",
+				"properties": {
+					"description": {
+						"type": "string"
+					},
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"description",
+					"id",
+					"name",
+					"type"
+				]
+			},
+			"models.Record": {
+				"properties": {
+					"createdTime": {
+						"type": "string"
+					},
+					"fields": {
+						"$ref": "#/components/schemas/models.Field"
+					},
+					"id": {
+						"type": "string"
+					}
+				},
+				"type": "object"
+			},
+			"models.RecordsStruct": {
+				"properties": {
+					"records": {
+						"items": {
+							"properties": {
+								"createdTime": {
+									"type": "string"
+								},
+								"fields": {
+									"properties": {
+										"Field": {
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"id": {
+									"type": "string"
+								}
+							},
+							"type": "object"
+						},
+						"type": "array"
+					}
+				},
+				"type": "object"
+			}
+		}
+	}
 }
