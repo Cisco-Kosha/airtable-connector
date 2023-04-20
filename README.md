@@ -4,9 +4,7 @@
 
 With Airtable you can create spreadsheets that function like databases. 
 
-Using the Kosha Airtable connecter, you can create bases (databases), set up column types, add records, link tables to one another, collaborate, sort records, and integrate your Airtable data with any external system.
-
-The Airtable API follows REST semantics, encodes objects in JSON, and uses standard HTTP response codes.
+Using the Kosha Airtable connecter, you can access the Airtable REST API to create bases (databases), set up column types, add records, link tables to one another, collaborate, sort records, and integrate your Airtable data with any external system.
 
 ## Useful Actions 
 
