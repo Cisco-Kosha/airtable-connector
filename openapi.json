@@ -34,7 +34,7 @@
           "Bases"
         ],
         "description": "Get Bases",
-        "summary": "Get airtable"
+        "summary": "Get airtable bases"
       }
     },
     "/v0/meta/bases/{baseId}/tables": {
@@ -47,14 +47,19 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/meta/bases",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".bases[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           }
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/models.BasesStruct"
+                "$ref": "#/components/schemas/models.TablesStruct"
               }
             }
           }
@@ -65,7 +70,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/models.BasesStruct"
+                  "$ref": "#/components/schemas/models.TablesStruct"
                 }
               }
             },
@@ -73,11 +78,48 @@
           }
         },
         "tags": [
-          "Records"
+          "Tables"
         ],
-        "description": "Create Bases",
-        "summary": "Create Bases"
-      }, 
+        "description": "Create Tables",
+        "summary": "Create Tables"
+      },
+      "get": {
+        "parameters": [
+          {
+            "description": "Base Id",
+            "in": "path",
+            "name": "baseId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-kosha-data-source": "/v0/meta/bases",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".bases[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/models.TablesStruct"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Tables"
+        ],
+        "description": "Get Tables",
+        "summary": "Get Tables"
+      },
+    },
+    "/v0/meta/bases/{baseId}/tables/{tableId}": {
       "put": {
         "parameters": [
           {
@@ -87,40 +129,57 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/meta/bases",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".bases[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
+          },
+          {
+            "description": "Table Id",
+            "in": "path",
+            "name": "tableId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".tables[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/models.TablesStruct"
+              }
+            }
+          }
+        },
+
         "responses": {
           "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/models.BasesStruct"
+                  "$ref": "#/components/schemas/models.TablesStruct"
                 }
               }
             },
             "description": "OK"
           }
         },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/models.BasesStruct"
-              }
-            }
-          }
-        },
-
         "tags": [
-          "Bases"
+          "Tables"
         ],
-        "description": "Update Bases",
-        "summary": "Update Bases"
-      }
-
+        "description": "Update Table",
+        "summary": "Update Table"
+      },
     },
-
     "/v0/meta/bases/{baseId}/tables/{tableId}/fields": {
       "post": {
         "parameters": [
@@ -131,7 +190,12 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/meta/bases",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".bases[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           },
           {
             "description": "Table Id",
@@ -140,14 +204,19 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".tables[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           }
         ],
          "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/models.BasesStruct"
+                "$ref": "#/components/schemas/models.NewField"
               }
             }
           }
@@ -180,7 +249,12 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/meta/bases",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".bases[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           },{
             "description": "Table Id",
             "in": "path",
@@ -188,7 +262,12 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".tables[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           }
         ],
         "responses": {
@@ -207,7 +286,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/models.Field"
+                "$ref": "#/components/schemas/models.FieldsStruct"
               }
             }
           }
@@ -292,7 +371,12 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/meta/bases",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".bases[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           },
           {
             "description": "Table Id",
@@ -301,7 +385,12 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".tables[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           },
           {
             "description": "Record Id",
@@ -310,7 +399,12 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/{baseId}/{tableId}",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".records[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           }
         ],
         "responses": {
@@ -340,7 +434,12 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/meta/bases",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".bases[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           },
           {
             "description": "Table Id",
@@ -349,7 +448,12 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+             "x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".tables[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           },
           {
             "description": "Record Id",
@@ -358,7 +462,12 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/{baseId}/{tableId}",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".records[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           }
         ],
         "responses": {
@@ -389,7 +498,12 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/meta/bases",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".bases[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           },
           {
             "description": "Table Id",
@@ -398,7 +512,12 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".tables[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           },
           {
             "description": "Record Id",
@@ -407,7 +526,12 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/{baseId}/{tableId}",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".records[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           }
         ],
         "responses": {
@@ -450,7 +574,12 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/meta/bases",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".bases[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           },
           {
             "description": "Table Id",
@@ -459,7 +588,12 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".tables[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           }
         ],
         "responses": {
@@ -542,7 +676,12 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/meta/bases",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".bases[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           },
           {
             "description": "Table Id",
@@ -551,7 +690,12 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".tables[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           },
           {
             "description": "Base Id",
@@ -560,7 +704,12 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/{baseId}/{tableId}",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".records[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           }
         ],
         "responses": {
@@ -578,8 +727,8 @@
         "tags": [
           "Comments"
         ],
-        "description": "Get Comments",
-        "summary": "Get airtable"
+        "description": "List Comments",
+        "summary": "List comments for the record from newest to oldest."
       }
     },
     
@@ -593,7 +742,12 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/meta/bases",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".bases[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           },
           {
             "description": "Table Id",
@@ -602,7 +756,12 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "x-kosha-data-source": "/v0/meta/bases/{baseId}/tables",
+            "x-kosha-data-type": "array",
+            "x-kosha-data-prefix": ".tables[]",
+            "x-kosha-data-label": "name",
+            "x-kosha-data-value": "id",
           }
         ],
         "responses": {
@@ -620,8 +779,8 @@
         "tags": [
           "Records"
         ],
-        "description": "Get Records",
-        "summary": "Get airtable"
+        "description": "List Records",
+        "summary": "List records"
       }
     }
   },
@@ -639,6 +798,45 @@
       }
     },
     "schemas": {
+      "models.TablesStruct": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "fields": {
+            "type": "array",
+            "items":
+              {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "description",
+                  "name",
+                  "type"
+                ]
+              }
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "description",
+          "fields",
+          "name"
+        ]
+      },
       "models.CreateRecords": {
         "type": "object",
         "properties": {
@@ -654,6 +852,55 @@
             }
           }
         }
+      },
+      "models.FieldsStruct": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "description",
+          "name"
+        ]
+      },
+      "models.NewField": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "options": {
+            "type": "object",
+            "properties": {
+              "color": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "color",
+              "icon"
+            ]
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "description",
+          "name",
+          "type"
+        ]
       },
       "models.BasesStruct": {
         "properties": {
@@ -741,21 +988,27 @@
         "type": "object"
       },
       "models.Field": {
+        "type": "object",
         "properties": {
-          "End date": {
+          "description": {
             "type": "string"
           },
-          "Field 3": {
+          "id": {
             "type": "string"
           },
-          "Field 4": {
+          "name": {
             "type": "string"
           },
-          "Projects": {
+          "type": {
             "type": "string"
           }
         },
-        "type": "object"
+        "required": [
+          "description",
+          "id",
+          "name",
+          "type"
+        ]
       },
       "models.Record": {
         "properties": {
@@ -781,16 +1034,7 @@
                 },
                 "fields": {
                   "properties": {
-                    "End date": {
-                      "type": "string"
-                    },
-                    "Field 3": {
-                      "type": "string"
-                    },
-                    "Field 4": {
-                      "type": "string"
-                    },
-                    "Projects": {
+                    "Field": {
                       "type": "string"
                     }
                   },
