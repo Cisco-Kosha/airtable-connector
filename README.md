@@ -59,4 +59,4 @@ curl -X POST "https://api.airtable.com/v0/meta/bases/{baseId}/tables" \
 
 ## Authentication
 
-Authentication requires your [personal access token](https://airtable.com/developers/web/guides/personal-access-tokens) tied to your Kosha Airtable connector and associated scopes.
+To authenticate when provisioning the Kosha Airtable connector, you need your [personal access token](https://airtable.com/developers/web/guides/personal-access-tokens) tied to your associated scopes.
