@@ -2,13 +2,13 @@
   "version": "2.0.0",
   "fields": [
     {
-      "field": "API_KEY",
-      "displayName": "Airtable API Key",
+      "field": "BEARER_TOKEN",
+      "displayName": "Airtable Access Token",
       "type": "String",
       "minLength": 4,
       "maxLength": 60,
       "required": true,
-      "description": "Airtable API Key",
+      "description": "Airtable Access Token",
       "example": "NPfWE2p1H7yBzIXnRB",
       "helpSection": "Login to your airtable account \n Go to Dashboard -> Edit Profile \n To the right side, you should see the personal access token generated associated with your user account"
     },
@@ -20,8 +20,8 @@
       "maxLength": 60,
       "required": true,
       "description": "Airtable API Auth Type",
-      "default": "API_KEY",
-      "example": "API_KEY",
+      "default": "BEARER_TOKEN",
+      "example": "BEARER_TOKEN",
       "helpSection": ""
     },
     {
