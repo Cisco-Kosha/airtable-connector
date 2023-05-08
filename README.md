@@ -12,7 +12,7 @@ The Kosha Airtable connecter enables you to perform REST API operations from the
 
 ## Useful Actions 
 
-You can use the Kosha Airtable connector to perform to manage records, tables, fields, and bases.
+You can use the Kosha Airtable connector to manage records, tables, fields, and bases.
 
 Refer to the Kosha Airtable connector [API specification](openapi.json) for details.
 
