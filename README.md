@@ -16,46 +16,21 @@ You can use the Kosha Airtable connector to manage records, tables, fields, and 
 
 Refer to the Kosha Airtable connector [API specification](openapi.json) for details.
 
-* Managing Records: A record is an individual unit in a table. Use the Airtable API to create, manage and delete records.
+### Managing Records
 
-* Managing Fields: Fields are the units in records you use to store custom data. Use the Airtable API to create and update fields.
+A record is an individual unit in a table. Use the Airtable API to create, manage and delete records.
 
-* Managing Tables: Tables are structural units that enable you to consistently store your Airtable data. 
+### Managing Fields
 
-* Managing Bases: In Airtable a base—or database—is central place to store your data, including tables. You can use the API to list, get, and create bases. 
+Fields are the units in records you use to store custom data. Use the Airtable API to create and update fields.
 
-## Example Usage
+### Managing Tables
 
-The following request creates a table:
+Tables are structural units that enable you to consistently store your Airtable data. 
 
-```
-curl -X POST "https://api.airtable.com/v0/meta/bases/{baseId}/tables" \
--H "Authorization: Bearer YOUR_TOKEN" \
--H "Content-Type: application/json" \
---data '{
-    "description": "A to-do list of places to visit",
-    "fields": [
-      {
-        "description": "Name of the apartment",
-        "name": "Name",
-        "type": "singleLineText"
-      },
-      {
-        "name": "Address",
-        "type": "singleLineText"
-      },
-      {
-        "name": "Visited",
-        "options": {
-          "color": "greenBright",
-          "icon": "check"
-        },
-        "type": "checkbox"
-      }
-    ],
-    "name": "Apartments"
-  }'
-  ```
+### Managing Bases
+
+In Airtable a base—or database—is central place to store your data, including tables. You can use the API to list, get, and create bases. 
 
 ## Authentication
 
