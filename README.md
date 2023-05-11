@@ -1,7 +1,5 @@
 # Kosha Airtable Connector
 
-![airtable](images/test.png)
-
 With Airtable you can create spreadsheets that function like databases. 
 
 The Kosha Airtable connecter enables you to perform REST API operations from the Airtable API in your Kosha workflow or custom application. Using the Kosha Airtable connecter, you can directly access the Airtable platform to:
