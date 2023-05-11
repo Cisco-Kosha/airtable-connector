@@ -1,23 +1,37 @@
 # Kosha Airtable Connector
 
-With Airtable you can create spreadsheets that function like databases. The fields in an Airtable table are similar to cells in a spreadsheet but have types such as 'checkbox', 'phone number', and 'drop-down list', and the cells can reference file attachments, such as images.
-
-You can create a database, set up column types, add records, link tables to one another, collaborate, sort records, and publish views to external websites.
-
 ![airtable](images/test.png)
+
+With Airtable you can create spreadsheets that function like databases. 
+
+The Kosha Airtable connecter enables you to perform REST API operations from the Airtable API in your Kosha workflow or custom application. Using the Kosha Airtable connecter, you can directly access the Airtable platform to:
+
+* Create bases (or databases)
+* Add records
+* Integrate your Airtable data with any external system
 
 ## Useful Actions 
 
-Use the Airtable connector to integrate your Airtable data with any external system. The Airtable API follows REST semantics, encodes objects in JSON, and uses standard HTTP response codes.
+You can use the Kosha Airtable connector to manage records, tables, fields, and bases.
 
-The Airtable API supports CRUD operations on Airtable records, tables, and schemas.
+Refer to the Kosha Airtable connector [API specification](openapi.json) for details.
 
-Refer to the Airtable connector [API specification](openapi.json) for details.
+### Managing Records
 
-## Example Usage
+A record is an individual unit in a table. Use the Airtable API to create, manage and delete records.
 
-< sdk example? >
+### Managing Fields
+
+Fields are the units in records you use to store custom data. Use the Airtable API to create and update fields.
+
+### Managing Tables
+
+Tables are structural units that enable you to consistently store your Airtable data. 
+
+### Managing Bases
+
+In Airtable a base—or database—is central place to store your data, including tables. You can use the API to list, get, and create bases. 
 
 ## Authentication
 
-Configuration requires your personal access token tied to your Airtable connector and associated scopes.
+To authenticate when provisioning the Kosha Airtable connector, you need your [personal access token](https://airtable.com/developers/web/guides/personal-access-tokens) tied to your associated scopes.
