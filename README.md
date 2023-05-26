@@ -33,3 +33,9 @@ In Airtable a base—or database—is central place to store your data, includin
 ## Authentication
 
 To authenticate when provisioning the Kosha Airtable connector, you need your [personal access token](https://airtable.com/developers/web/guides/personal-access-tokens) tied to your associated scopes.
+
+## Kosha Connector Open Source Development
+
+All connectors Kosha shares on the marketplace are open source. We believe in fostering collaboration and open development. Everyone is welcome to contribute their ideas, improvements, and feedback for any Kosha connector. We encourage community engagement and appreciate any contributions that align with our goals of an open and collaborative API management platform.
+
+Refer to the contribution guidelines for details.
